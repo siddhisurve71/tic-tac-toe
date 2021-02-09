@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>x and o Game</title>
+    <style>
+        td{
+            border: 1px solid black;
+            width: 50px;
+            height: 50px;
+            font-size: 40px;
+            text-align: center;
+        }
+        p{
+            font-size: 70px;
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <table id="myTable">
+            <tr>
+                <td onclick="play(this.id)" class="cell" id="0"></td>
+                <td onclick="play(this.id)" class="cell" id="1"></td>
+                <td onclick="play(this.id)" class="cell" id="2"></td>
+            </tr>
+            <tr>
+                <td onclick="play(this.id)" class="cell" id="3"></td>
+                <td onclick="play(this.id)" class="cell" id="4"></td>
+                <td onclick="play(this.id)" class="cell" id="5"></td>
+            </tr>
+            <tr>
+                <td onclick="play(this.id)" class="cell" id="6"></td>
+                <td onclick="play(this.id)" class="cell" id="7"></td>
+                <td onclick="play(this.id)" class="cell" id="8"></td>
+            </tr>
+        </table>
+        <p id="demo"></p>
+    </center>
+    <script>
+        var count=0;
+        var currentTurn = 'x';
+        function play(id){  
+            if(count%2==0){
+                currentTurn = 'x';
+                count++; 
+            }
+            else{
+                currentTurn = 'o';
+                count++;  
+            }
+            document.getElementsByClassName("cell")[id].innerHTML=currentTurn;
+            c1=document.getElementById("0");
+            c2=document.getElementById("1");
+            c3=document.getElementById("2");
+            c4=document.getElementById("3");
+            c5=document.getElementById("4");
+            c6=document.getElementById("5");
+            c7=document.getElementById("6");
+            c8=document.getElementById("7");
+            c9=document.getElementById("8");
+            checkGame();
+        }
+        function checkGame(){
+            if(c1.innerText=="x" && c2.innerText=="x" && c3.innerText=="x"){
+                applyBackground(c1,c2,c3);
+                selectWinner("X");
+                disable();
+            }else if(c4.innerText=="x" && c5.innerText=="x" && c6.innerText=="x"){
+                applyBackground(c4,c5,c6);
+                selectWinner("X"); 
+                disable();
+            }else if(c7.innerText=="x" && c8.innerText=="x" && c9.innerText=="x"){
+                applyBackground(c7,c8,c9);
+                selectWinner("X"); 
+                disable();
+            }else if(c1.innerText=="o" && c2.innerText=="o" && c3.innerText=="o"){
+                applyBackground(c1,c2,c3);
+                selectWinner("O"); 
+                disable();
+            }else if(c4.innerText=="o" && c5.innerText=="o" && c6.innerText=="o"){
+                applyBackground(c4,c5,c6);
+                selectWinner("O"); 
+                disable();
+            }else if(c7.innerText=="o" && c8.innerText=="o" && c9.innerText=="o"){
+                applyBackground(c7,c8,c9);
+                selectWinner("O"); 
+                disable();
+            }else if(c1.innerText=="x" && c4.innerText=="x" && c7.innerText=="x"){
+                applyBackground(c1,c4,c7);
+                selectWinner("X");
+                disable();
+            }else if(c2.innerText=="x" && c5.innerText=="x" && c8.innerText=="x"){
+                applyBackground(c2,c5,c8);
+                selectWinner("X");
+                disable();
+            }else if(c3.innerText=="x" && c6.innerText=="x" && c9.innerText=="x"){
+                applyBackground(c3,c6,c9);
+                selectWinner("X");
+                disable();
+            }else if( c1.innerText=="o" && c4.innerText=="o" && c7.innerText=="o"){
+                applyBackground(c1,c4,c7);
+                selectWinner("O");
+                disable();
+            }else if(c2.innerText=="o" && c5.innerText=="o" && c8.innerText=="o"){
+                applyBackground(c2,c5,c8);
+                selectWinner("O");
+                disable();
+            }else if(c3.innerText=="o" && c6.innerText=="o" && c9.innerText=="o"){
+                applyBackground(c3,c6,c9);
+                selectWinner("O");
+                disable();
+            }else if(c7.innerText=="x" && c8.innerText=="x" && c9.innerText=="x"){
+                applyBackground(c7,c8,c9);
+                selectWinner("X");
+                disable();
+            }else if(c1.innerText=="x" && c5.innerText=="x" && c9.innerText=="x"){
+                applyBackground(c1,c5,c9);
+                selectWinner("X");
+                disable();
+            }else if(c3.innerText=="x" && c5.innerText=="x" && c7.innerText=="x"){
+                applyBackground(c3,c5,c7);
+                selectWinner("X");
+                disable();
+            }else if(c7.innerText=="o" && c8.innerText=="o" && c9.innerText=="o"){
+                applyBackground(c7,c8,c9);
+                selectWinner("O");
+                disable();
+            }else if(c1.innerText=="o" && c5.innerText=="o" && c9.innerText=="o"){
+                applyBackground(c1,c5,c9);
+                selectWinner("O");
+                disable();
+            }else if(c3.innerText=="o" && c5.innerText=="o" && c7.innerText=="o"){
+                applyBackground(c3,c5,c7);
+                selectWinner("O");
+                disable();
+            }
+        }
+        function applyBackground(e1,e2,e3){
+            e1.style.backgroundColor="blue";
+            e2.style.backgroundColor="blue";
+            e3.style.backgroundColor="blue";
+        }
+        function disable(){
+            document.getElementById("myTable").style.pointerEvents="none";
+        }
+        function selectWinner(winner){
+            document.getElementById("demo").innerHTML="Winner is "+winner+ "!!";
+        }
+    </script>
+</body>
+</html>
